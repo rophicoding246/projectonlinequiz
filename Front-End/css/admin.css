@@ -1,0 +1,156 @@
+/* CSS Document */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700,800|Roboto:400,500,700,900');
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #666;
+    background-color: #ddd;
+    font-size: 16px;
+    /* line-height: 1.6em; */
+}
+.shadow
+{
+	
+	width: 800px;
+	height: auto;
+	margin-left: 300px;
+	margin-top: 100px;
+	background-color: aqua;
+	
+	
+}
+.codequestion
+{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.codequestion p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.codequestion input
+{
+	margin-top: 15px;
+	width: 750px;
+}
+
+.question 
+{   
+	padding-right: 50px;
+	padding-bottom: 15px;
+	
+}
+.question p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.question input 
+{
+	margin-top: 15px;
+	width: 750px;
+}
+.Image 
+{
+	padding-right: 50px;
+	padding-bottom: 15px;
+}
+
+.Image P
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+.custom-file
+{
+	width: 750px;
+}
+.Type
+{
+    padding-right: 25px;
+	padding-bottom: 15px;
+}
+.Type p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.Difficulty 
+{
+	padding-right: 25px;
+	padding-bottom: 15px;
+}
+.Difficulty p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+.codeSubject
+{
+	padding-right: 25px;
+	padding-bottom: 15px;
+}
+.codeSubject p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	
+}
+.CodeTeacher
+{
+	padding-right: 25px;
+	padding-bottom: 15px;
+}
+.CodeTeacher p
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+.CodeChapter
+{
+	padding-right: 25px;
+	padding-bottom: 15px;
+}
+.CodeChapter p
+{
+	
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+.input-group
+{
+	width: 750px;
+}.form-check-inline
+{
+	padding-left: 50px;
+	padding-right: 45px;
+}
+.addmon 
+{
+    margin-right: 95px;
+	padding-top: 15px;
+	padding-left: 650px;
+
+}
+
+
+
+
+
+
+
+

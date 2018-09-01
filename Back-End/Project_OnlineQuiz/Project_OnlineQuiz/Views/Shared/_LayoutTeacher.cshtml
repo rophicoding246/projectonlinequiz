@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="teacher-questionmanagement.html">Ngân hàng câu hỏi, đề thi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Lớp học</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

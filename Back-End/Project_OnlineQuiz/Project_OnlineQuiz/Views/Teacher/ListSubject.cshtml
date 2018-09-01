@@ -1,0 +1,20 @@
+﻿@model List<Project_OnlineQuiz.Models.Subject>
+
+@{
+    ViewBag.Title = "Danh sách môn học";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+}
+
+<h2>Danh sách môn học</h2>
+
+@for (int i = 1; i <= Model.Count(); i++)
+{
+    var tmp = "<div class='col-lg-3 col-xl-2 col-md-4 col-sm-6 col-xs-12'>";
+    tmp += "<div class='card'>";
+    tmp += "<h5>" + Model[i - 1].Name + "</h5>";
+    tmp += "</div>";
+    tmp += "</div>";
+    @Html.Raw(tmp)
+}
+
+

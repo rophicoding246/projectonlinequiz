@@ -1,0 +1,132 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700,800|Roboto:400,500,700,900');
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #666;
+    background-color: #ddd;
+    font-size: 16px;
+    line-height: 1.6em;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.header-area {}
+
+#timetoday {
+    font-size: 20px;
+    margin: 0;
+}
+
+#datetoday {
+    font-size: 15px;
+    font-style: italic;
+}
+
+.title-page {
+    margin-top: 19px;
+}
+
+
+/* ===========
+Typo
+============= */
+
+p.medium {
+    font-weight: 500;
+}
+
+p.bold {
+    font-weight: 700;
+}
+
+p.ultra {
+    font-weight: 900;
+}
+
+a {
+    color: #666;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+
+/* =======
+Top area
+======== */
+
+.top-area {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    width: 100%;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #FFB114
+}
+
+.top-area.top-padding {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    padding-top: 6px;
+    padding-bottom: 0;
+}
+
+.top-area p {
+    margin-bottom: 6px;
+}
+
+
+/* ===========
+Navigation
+============= */
+
+.navbar {
+    padding: 0px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+.navbar-light {
+    width: inherit;
+    margin: 0 auto;
+    padding-bottom: 0;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    -o-box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+}
+
+
+/* ============
+Sidebar
+=============*/
+
+.content-body {
+    margin-top: 150px;
+}
+
+@media (max-width: 560px) {
+    .navbar-brand {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 560px) {
+    .navbar-brand {
+        margin-left: 10px;
+    }
+}

@@ -19,7 +19,7 @@ namespace Project_OnlineQuiz.Controllers
 
         public ActionResult ListSubject()
         {
-            List<Subject> listSubject = db_onlinequiz.Subjects.Select(n => n).ToList();
+            List<TeachingSubject> listSubject = db_onlinequiz.TeachingSubjects.Select(n => n).ToList();
             return PartialView(listSubject);
         }
     }

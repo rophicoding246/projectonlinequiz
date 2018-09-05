@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_OnlineQuizModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="CodeAccount" />
+    </Key>
+    <Property Name="CodeAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Permission" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Members_Accounts" FromRole="Accounts" ToRole="Members" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="CodeAdmin" />
+    </Key>
+    <Property Name="CodeAdmin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Admins_Members" FromRole="Admins" ToRole="Members" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="CodeAnswer" />
+    </Key>
+    <Property Name="CodeAnswer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsCorrect" Type="Boolean" />
+    <Property Name="CodeQuestion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Answers_Questions" FromRole="Answers" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="AttendClass">
+    <Key>
+      <PropertyRef Name="CodeStudent" />
+      <PropertyRef Name="CodeClass" />
+    </Key>
+    <Property Name="CodeStudent" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodeClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateJoined" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_AttendClass_Classes" FromRole="AttendClass" ToRole="Classes" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_AttendClass_Students" FromRole="AttendClass" ToRole="Students" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_AttendClass" FromRole="AttendClass" ToRole="Tests" />
+  </EntityType>
+  <EntityType Name="Chapter">
+    <Key>
+      <PropertyRef Name="CodeChapter" />
+    </Key>
+    <Property Name="CodeChapter" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CodeSubject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Chapters_Subjects" FromRole="Chapters" ToRole="Subjects" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Chapters" FromRole="Chapters" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="CodeClass" />
+    </Key>
+    <Property Name="CodeClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CodeSubject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeTeacher" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeTerm" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AttendClasses" Relationship="Self.FK_AttendClass_Classes" FromRole="Classes" ToRole="AttendClass" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Classes_Subjects" FromRole="Classes" ToRole="Subjects" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Classes_Teachers" FromRole="Classes" ToRole="Teachers" />
+    <NavigationProperty Name="Term" Relationship="Self.FK_Classes_Terms" FromRole="Classes" ToRole="Terms" />
+    <NavigationProperty Name="Exams" Relationship="Self.FK_Exams_Classes" FromRole="Classes" ToRole="Exams" />
+  </EntityType>
+  <EntityType Name="ExamDetail">
+    <Key>
+      <PropertyRef Name="CodeExamDetail" />
+    </Key>
+    <Property Name="CodeExamDetail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Num" Type="Int32" />
+    <Property Name="CodeExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeQuestion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Exam" Relationship="Self.FK_ExamDetails_Exams" FromRole="ExamDetails" ToRole="Exams" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_ExamDetails_Questions" FromRole="ExamDetails" ToRole="Questions" />
+    <NavigationProperty Name="MixingExamDetails" Relationship="Self.FK_MixingExamDetails_ExamDetails" FromRole="ExamDetails" ToRole="MixingExamDetails" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="CodeExam" />
+    </Key>
+    <Property Name="CodeExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumOfQuestions" Type="Int32" />
+    <Property Name="NumOfMixings" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="DateCreate" Type="DateTime" Precision="3" />
+    <Property Name="CodeClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Exams_Classes" FromRole="Exams" ToRole="Classes" />
+    <NavigationProperty Name="ExamDetails" Relationship="Self.FK_ExamDetails_Exams" FromRole="Exams" ToRole="ExamDetails" />
+    <NavigationProperty Name="MixingExams" Relationship="Self.FK_MixingExam_Exams" FromRole="Exams" ToRole="MixingExam" />
+  </EntityType>
+  <EntityType Name="GeneralQuestion">
+    <Key>
+      <PropertyRef Name="CodeGeneralQuestion" />
+    </Key>
+    <Property Name="CodeGeneralQuestion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_GeneralQuestion" FromRole="GeneralQuestion" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="CodeMember" />
+    </Key>
+    <Property Name="CodeMember" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DoB" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Members_Accounts" FromRole="Members" ToRole="Accounts" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK_Admins_Members" FromRole="Members" ToRole="Admins" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Students_Members" FromRole="Members" ToRole="Students" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Teachers_Members" FromRole="Members" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="MixingExam">
+    <Key>
+      <PropertyRef Name="CodeMixingExam" />
+    </Key>
+    <Property Name="CodeMixingExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CodeExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Exam" Relationship="Self.FK_MixingExam_Exams" FromRole="MixingExam" ToRole="Exams" />
+    <NavigationProperty Name="MixingExamDetails" Relationship="Self.FK_MixingExamDetails_MixingExam" FromRole="MixingExam" ToRole="MixingExamDetails" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_MixingExam" FromRole="MixingExam" ToRole="Tests" />
+  </EntityType>
+  <EntityType Name="MixingExamDetail">
+    <Key>
+      <PropertyRef Name="CodeMixingExamDetail" />
+    </Key>
+    <Property Name="CodeMixingExamDetail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Num" Type="Int32" />
+    <Property Name="CodeMixingExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeExamDetail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ExamDetail" Relationship="Self.FK_MixingExamDetails_ExamDetails" FromRole="MixingExamDetails" ToRole="ExamDetails" />
+    <NavigationProperty Name="MixingExam" Relationship="Self.FK_MixingExamDetails_MixingExam" FromRole="MixingExamDetails" ToRole="MixingExam" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="CodeQuestion" />
+    </Key>
+    <Property Name="CodeQuestion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="Difficulty" Type="Int32" />
+    <Property Name="NumOfIterations" Type="Int32" />
+    <Property Name="CodeSubject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeTeacher" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeGeneralQuestion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CodeChapter" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answers_Questions" FromRole="Questions" ToRole="Answers" />
+    <NavigationProperty Name="Chapter" Relationship="Self.FK_Questions_Chapters" FromRole="Questions" ToRole="Chapters" />
+    <NavigationProperty Name="ExamDetails" Relationship="Self.FK_ExamDetails_Questions" FromRole="Questions" ToRole="ExamDetails" />
+    <NavigationProperty Name="GeneralQuestion" Relationship="Self.FK_Questions_GeneralQuestion" FromRole="Questions" ToRole="GeneralQuestion" />
+    <NavigationProperty Name="TeachingSubject" Relationship="Self.FK_Questions_TeachingSubject" FromRole="Questions" ToRole="TeachingSubject" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="CodeStudent" />
+    </Key>
+    <Property Name="CodeStudent" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Course" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AttendClasses" Relationship="Self.FK_AttendClass_Students" FromRole="Students" ToRole="AttendClass" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Students_Members" FromRole="Students" ToRole="Members" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="CodeSubject" />
+    </Key>
+    <Property Name="CodeSubject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Chapters" Relationship="Self.FK_Chapters_Subjects" FromRole="Subjects" ToRole="Chapters" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Subjects" FromRole="Subjects" ToRole="Classes" />
+    <NavigationProperty Name="TeachingSubjects" Relationship="Self.FK_TeachingSubject_Subjects" FromRole="Subjects" ToRole="TeachingSubject" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="CodeTeacher" />
+    </Key>
+    <Property Name="CodeTeacher" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Teachers" FromRole="Teachers" ToRole="Classes" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Teachers_Members" FromRole="Teachers" ToRole="Members" />
+    <NavigationProperty Name="TeachingSubjects" Relationship="Self.FK_TeachingSubject_Teachers" FromRole="Teachers" ToRole="TeachingSubject" />
+  </EntityType>
+  <EntityType Name="TeachingSubject">
+    <Key>
+      <PropertyRef Name="CodeTeacher" />
+      <PropertyRef Name="CodeSubject" />
+    </Key>
+    <Property Name="CodeTeacher" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodeSubject" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateJoined" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_TeachingSubject" FromRole="TeachingSubject" ToRole="Questions" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_TeachingSubject_Subjects" FromRole="TeachingSubject" ToRole="Subjects" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_TeachingSubject_Teachers" FromRole="TeachingSubject" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="Term">
+    <Key>
+      <PropertyRef Name="CodeTerm" />
+    </Key>
+    <Property Name="CodeTerm" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="StartEnd" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Terms" FromRole="Terms" ToRole="Classes" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="CodeStudent" />
+      <PropertyRef Name="CodeClass" />
+      <PropertyRef Name="CodeMixingExam" />
+    </Key>
+    <Property Name="CodeStudent" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodeClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodeMixingExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Scores" Type="Double" />
+    <Property Name="TimeWork" Type="Int32" />
+    <Property Name="Advent" Type="Boolean" />
+    <NavigationProperty Name="AttendClass" Relationship="Self.FK_Tests_AttendClass" FromRole="Tests" ToRole="AttendClass" />
+    <NavigationProperty Name="MixingExam" Relationship="Self.FK_Tests_MixingExam" FromRole="Tests" ToRole="MixingExam" />
+  </EntityType>
+  <Association Name="FK_Members_Accounts">
+    <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="CodeAccount" />
+      </Principal>
+      <Dependent Role="Members">
+        <PropertyRef Name="CodeMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admins_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="1" />
+    <End Role="Admins" Type="Self.Admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="CodeMember" />
+      </Principal>
+      <Dependent Role="Admins">
+        <PropertyRef Name="CodeAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Questions">
+    <End Role="Questions" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Answers" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="CodeQuestion" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="CodeQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AttendClass_Classes">
+    <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+    <End Role="AttendClass" Type="Self.AttendClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="CodeClass" />
+      </Principal>
+      <Dependent Role="AttendClass">
+        <PropertyRef Name="CodeClass" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AttendClass_Students">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="AttendClass" Type="Self.AttendClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="CodeStudent" />
+      </Principal>
+      <Dependent Role="AttendClass">
+        <PropertyRef Name="CodeStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tests_AttendClass">
+    <End Role="AttendClass" Type="Self.AttendClass" Multiplicity="1" />
+    <End Role="Tests" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AttendClass">
+        <PropertyRef Name="CodeStudent" />
+        <PropertyRef Name="CodeClass" />
+      </Principal>
+      <Dependent Role="Tests">
+        <PropertyRef Name="CodeStudent" />
+        <PropertyRef Name="CodeClass" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Chapters_Subjects">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="Chapters" Type="Self.Chapter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="CodeSubject" />
+      </Principal>
+      <Dependent Role="Chapters">
+        <PropertyRef Name="CodeSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Chapters">
+    <End Role="Chapters" Type="Self.Chapter" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chapters">
+        <PropertyRef Name="CodeChapter" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="CodeChapter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Subjects">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="CodeSubject" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="CodeSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="CodeTeacher" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="CodeTeacher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Terms">
+    <End Role="Terms" Type="Self.Term" Multiplicity="0..1" />
+    <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terms">
+        <PropertyRef Name="CodeTerm" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="CodeTerm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exams_Classes">
+    <End Role="Classes" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="Exams" Type="Self.Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="CodeClass" />
+      </Principal>
+      <Dependent Role="Exams">
+        <PropertyRef Name="CodeClass" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamDetails_Exams">
+    <End Role="Exams" Type="Self.Exam" Multiplicity="0..1" />
+    <End Role="ExamDetails" Type="Self.ExamDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exams">
+        <PropertyRef Name="CodeExam" />
+      </Principal>
+      <Dependent Role="ExamDetails">
+        <PropertyRef Name="CodeExam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExamDetails_Questions">
+    <End Role="Questions" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="ExamDetails" Type="Self.ExamDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="CodeQuestion" />
+      </Principal>
+      <Dependent Role="ExamDetails">
+        <PropertyRef Name="CodeQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MixingExamDetails_ExamDetails">
+    <End Role="ExamDetails" Type="Self.ExamDetail" Multiplicity="0..1" />
+    <End Role="MixingExamDetails" Type="Self.MixingExamDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamDetails">
+        <PropertyRef Name="CodeExamDetail" />
+      </Principal>
+      <Dependent Role="MixingExamDetails">
+        <PropertyRef Name="CodeExamDetail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MixingExam_Exams">
+    <End Role="Exams" Type="Self.Exam" Multiplicity="0..1" />
+    <End Role="MixingExam" Type="Self.MixingExam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exams">
+        <PropertyRef Name="CodeExam" />
+      </Principal>
+      <Dependent Role="MixingExam">
+        <PropertyRef Name="CodeExam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_GeneralQuestion">
+    <End Role="GeneralQuestion" Type="Self.GeneralQuestion" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralQuestion">
+        <PropertyRef Name="CodeGeneralQuestion" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="CodeGeneralQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="CodeMember" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="CodeStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teachers_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="1" />
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="CodeMember" />
+      </Principal>
+      <Dependent Role="Teachers">
+        <PropertyRef Name="CodeTeacher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MixingExamDetails_MixingExam">
+    <End Role="MixingExam" Type="Self.MixingExam" Multiplicity="0..1" />
+    <End Role="MixingExamDetails" Type="Self.MixingExamDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MixingExam">
+        <PropertyRef Name="CodeMixingExam" />
+      </Principal>
+      <Dependent Role="MixingExamDetails">
+        <PropertyRef Name="CodeMixingExam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tests_MixingExam">
+    <End Role="MixingExam" Type="Self.MixingExam" Multiplicity="1" />
+    <End Role="Tests" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MixingExam">
+        <PropertyRef Name="CodeMixingExam" />
+      </Principal>
+      <Dependent Role="Tests">
+        <PropertyRef Name="CodeMixingExam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_TeachingSubject">
+    <End Role="TeachingSubject" Type="Self.TeachingSubject" Multiplicity="0..1" />
+    <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeachingSubject">
+        <PropertyRef Name="CodeTeacher" />
+        <PropertyRef Name="CodeSubject" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="CodeTeacher" />
+        <PropertyRef Name="CodeSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeachingSubject_Subjects">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+    <End Role="TeachingSubject" Type="Self.TeachingSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="CodeSubject" />
+      </Principal>
+      <Dependent Role="TeachingSubject">
+        <PropertyRef Name="CodeSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeachingSubject_Teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="TeachingSubject" Type="Self.TeachingSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="CodeTeacher" />
+      </Principal>
+      <Dependent Role="TeachingSubject">
+        <PropertyRef Name="CodeTeacher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_OnlineQuizEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="AttendClasses" EntityType="Self.AttendClass" />
+    <EntitySet Name="Chapters" EntityType="Self.Chapter" />
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="ExamDetails" EntityType="Self.ExamDetail" />
+    <EntitySet Name="Exams" EntityType="Self.Exam" />
+    <EntitySet Name="GeneralQuestions" EntityType="Self.GeneralQuestion" />
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <EntitySet Name="MixingExams" EntityType="Self.MixingExam" />
+    <EntitySet Name="MixingExamDetails" EntityType="Self.MixingExamDetail" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <EntitySet Name="TeachingSubjects" EntityType="Self.TeachingSubject" />
+    <EntitySet Name="Terms" EntityType="Self.Term" />
+    <EntitySet Name="Tests" EntityType="Self.Test" />
+    <AssociationSet Name="FK_Members_Accounts" Association="Self.FK_Members_Accounts">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Members" EntitySet="Members" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admins_Members" Association="Self.FK_Admins_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Admins" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Questions" Association="Self.FK_Answers_Questions">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AttendClass_Classes" Association="Self.FK_AttendClass_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="AttendClass" EntitySet="AttendClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AttendClass_Students" Association="Self.FK_AttendClass_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="AttendClass" EntitySet="AttendClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tests_AttendClass" Association="Self.FK_Tests_AttendClass">
+      <End Role="AttendClass" EntitySet="AttendClasses" />
+      <End Role="Tests" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Chapters_Subjects" Association="Self.FK_Chapters_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Chapters" EntitySet="Chapters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Chapters" Association="Self.FK_Questions_Chapters">
+      <End Role="Chapters" EntitySet="Chapters" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Subjects" Association="Self.FK_Classes_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Teachers" Association="Self.FK_Classes_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Terms" Association="Self.FK_Classes_Terms">
+      <End Role="Terms" EntitySet="Terms" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exams_Classes" Association="Self.FK_Exams_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Exams" EntitySet="Exams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamDetails_Exams" Association="Self.FK_ExamDetails_Exams">
+      <End Role="Exams" EntitySet="Exams" />
+      <End Role="ExamDetails" EntitySet="ExamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExamDetails_Questions" Association="Self.FK_ExamDetails_Questions">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="ExamDetails" EntitySet="ExamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MixingExamDetails_ExamDetails" Association="Self.FK_MixingExamDetails_ExamDetails">
+      <End Role="ExamDetails" EntitySet="ExamDetails" />
+      <End Role="MixingExamDetails" EntitySet="MixingExamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MixingExam_Exams" Association="Self.FK_MixingExam_Exams">
+      <End Role="Exams" EntitySet="Exams" />
+      <End Role="MixingExam" EntitySet="MixingExams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_GeneralQuestion" Association="Self.FK_Questions_GeneralQuestion">
+      <End Role="GeneralQuestion" EntitySet="GeneralQuestions" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Members" Association="Self.FK_Students_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teachers_Members" Association="Self.FK_Teachers_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Teachers" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MixingExamDetails_MixingExam" Association="Self.FK_MixingExamDetails_MixingExam">
+      <End Role="MixingExam" EntitySet="MixingExams" />
+      <End Role="MixingExamDetails" EntitySet="MixingExamDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tests_MixingExam" Association="Self.FK_Tests_MixingExam">
+      <End Role="MixingExam" EntitySet="MixingExams" />
+      <End Role="Tests" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_TeachingSubject" Association="Self.FK_Questions_TeachingSubject">
+      <End Role="TeachingSubject" EntitySet="TeachingSubjects" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeachingSubject_Subjects" Association="Self.FK_TeachingSubject_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="TeachingSubject" EntitySet="TeachingSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeachingSubject_Teachers" Association="Self.FK_TeachingSubject_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="TeachingSubject" EntitySet="TeachingSubjects" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_OnlineQuizModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DB_OnlineQuizModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

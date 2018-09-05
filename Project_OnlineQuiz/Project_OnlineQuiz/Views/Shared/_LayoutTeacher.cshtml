@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title - Giảng viên</title>
+    <link rel="stylesheet" href="~/Content/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+</head>
+
+<body onload="startTime()">
+    <div id="wrapper">
+
+        <!--Header top-area, navbar-->
+        <header class="header-area fixed-top">
+            <div class="top-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="bold text-center" id="timetoday"></p>
+                            <p class="text-center" id="datetoday"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html"><img src="~/images/webpage/logo_hsu.png" alt="logo" width="40" height="40" /></a>
+
+                    <button class="btn btn-link btn-sm order-1 order-sm-0" id="sidebarToggle" href="#">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item title-page">
+                            <p class="bold"><i>Giao diện giảng viên</i></p>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+        <!--End_Header top-area, navbar-->
+
+        <ul class="sidebar navbar-nav" id="style-1">
+            <div class="user-panel">
+                <div class="f-left image"><img src="~/images/webpage/avatar-5.png" alt="User Image" class="img-circle"></div>
+                <div class="f-left info">
+                    <p>Thu Hà</p>
+                    <p class="designation">Giảng viên<i class="icofont icofont-caret-down m-l-5"></i></p>
+                </div>
+            </div>
+            <li class="nav-item @(ViewBag.Current == "Index" ? "active" : "")">
+                <a class="nav-link" href="@Url.Action("Index", "Teacher")">
+                    <i class="far fa-window-maximize"></i>
+                    <span>Trang chính</span>
+                </a>
+            </li>
+            <li class="nav-item @(ViewBag.Current == "ListSubjectTeaching" ? "active" : "")">
+                <a class="nav-link" href="@Url.Action("ListSubjectTeaching", "Teacher")">
+                    <i class="fas fa-database"></i>
+                    <span>Ngân hàng câu hỏi, đề thi</span>
+                </a>
+            </li>
+            <li class="nav-item @(ViewBag.Current == "ListClassTeaching" ? "active" : "")">
+                <a class="nav-link" href="@Url.Action("ListClassTeaching", "Teacher")">
+                    <i class="fas fa-chalkboard"></i>
+                    <span>Lớp học</span>
+                </a>
+            </li>
+        </ul>
+
+        <!--Content body-->
+        <div class="container-fluid" id="content-wrapper">
+            @RenderBody()
+        </div>
+        <!--End_Content boby-->
+
+    </div>
+
+    <script src="~/Scripts/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/custom.js"></script>
+</body>
+
+</html>

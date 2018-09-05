@@ -17,10 +17,15 @@ namespace Project_OnlineQuiz.Controllers
             return View();
         }
 
-        public ActionResult ListSubject()
+        public ActionResult ListSubjectTeaching()
         {
-            List<TeachingSubject> listSubject = db_onlinequiz.TeachingSubjects.Select(n => n).ToList();
-            return PartialView(listSubject);
+            List<Subject> listSubject = db_onlinequiz.Subjects.Select(n => n).ToList();
+            return View(listSubject);
+        }
+
+        public ActionResult ListClassTeaching()
+        {
+            return View();
         }
     }
 }

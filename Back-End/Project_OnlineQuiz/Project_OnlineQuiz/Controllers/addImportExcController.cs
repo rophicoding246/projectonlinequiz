@@ -56,6 +56,7 @@ namespace Project_OnlineQuiz.Controllers
             SqlBulkCopy objbulk = new SqlBulkCopy(con);
             //Give your Destination table name
             objbulk.DestinationTableName = "Questions";
+            
             //Mappings
             objbulk.ColumnMappings.Add("CodeQuestion", "CodeQuestion");
             objbulk.ColumnMappings.Add("Text", "Text");

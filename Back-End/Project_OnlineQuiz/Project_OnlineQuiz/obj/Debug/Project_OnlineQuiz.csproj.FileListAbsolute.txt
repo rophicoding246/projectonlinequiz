@@ -101,6 +101,7 @@ E:\Studies\DoAnChuyenNganhA\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\D
 E:\Studies\DoAnChuyenNganhA\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\Debug\Project_OnlineQuiz.csproj.CopyComplete
 E:\Studies\DoAnChuyenNganhA\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\Debug\Project_OnlineQuiz.dll
 E:\Studies\DoAnChuyenNganhA\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\Debug\Project_OnlineQuiz.pdb
+<<<<<<< HEAD
 C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\bin\ApplicationInsights.config
 C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\bin\Project_OnlineQuiz.dll.config
 C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\bin\Project_OnlineQuiz.dll
@@ -205,3 +206,5 @@ C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_On
 C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\Debug\Project_OnlineQuiz.csproj.CopyComplete
 C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\Debug\Project_OnlineQuiz.dll
 C:\Users\TienManh\Desktop\DOANCHUYENNGANHA\projectonlinequiz\Back-End\Project_OnlineQuiz\Project_OnlineQuiz\obj\Debug\Project_OnlineQuiz.pdb
+=======
+>>>>>>> 263d0d3ed3726e4ad1f0cb4a58fd13b8b83e3132

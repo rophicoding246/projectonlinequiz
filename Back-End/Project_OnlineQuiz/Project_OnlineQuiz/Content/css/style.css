@@ -130,7 +130,7 @@ Wrapper
     transition: all .4s ease-in-out;
     margin-top: 100px;
     margin-left: 220px;
-    padding: 50px 10px 50px 10px;
+    padding: 30px 10px 50px 10px;
     width: 100%;
     overflow-x: hidden;
 }
@@ -140,6 +140,13 @@ Wrapper
     -moz-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
     margin-left: 0;
+}
+
+#wrapper #content-wrapper.top-padding {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    padding: 58px 10px 50px 10px;
 }
 
 
@@ -212,7 +219,7 @@ Sidebar
     background-image: url(../../images/webpage/background-user-panel.jpg);
     background-size: cover;
     background-blend-mode: overlay;
-    background-color: rgba(59, 20, 131, 0.34);
+    background-color: #415DFE;
 }
 
 .sidebar .nav-item {
@@ -222,7 +229,7 @@ Sidebar
 .sidebar .nav-item .nav-link {
     text-align: center;
     padding: 10px 5px;
-    color: #323232;
+    color: #666;
 }
 
 .sidebar .nav-item .nav-link span {
@@ -233,13 +240,14 @@ Sidebar
 
 .navbar-nav .nav-item.active .nav-link {
     color: #fff;
-    background-color: #059CF9;
+    background-color: #40C4FF;
 }
 
 .sidebar .nav-item .nav-link:active,
 .sidebar .nav-item .nav-link:focus,
 .sidebar .nav-item .nav-link:hover {
-    color: #415DFE;
+    color: #fff;
+    background-color: #2196F3;
 }
 
 .sidebar .user-panel>.image>img {
@@ -268,4 +276,19 @@ Sidebar
 
 .user-panel .info p {
     color: #fff;
+}
+
+/* ==============
+Content-Body
+============== */
+
+#content-wrapper h4 {
+    font-weight: 600;
+    font-size: 20px;
+    color: #373a3c;
+}
+
+.breadcrumb{
+    background-color: transparent;
+    padding : 0 20px;
 }

@@ -53,7 +53,6 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -170,8 +169,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\addImportExcController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportExcelController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +217,7 @@
     <Compile Include="Models\GeneralQuestion.cs">
       <DependentUpon>DB_OnlineQuiz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImportExcel.cs" />
     <Compile Include="Models\Member.cs">
       <DependentUpon>DB_OnlineQuiz.tt</DependentUpon>
     </Compile>
@@ -1768,13 +1768,14 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutTeacher.cshtml" />
-    <Content Include="Views\Teacher\ListSubject.cshtml" />
+    <Content Include="Views\Teacher\ListSubjectTeaching.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
-    <Content Include="Views\addImportExc\Index.cshtml" />
+    <Content Include="Views\Teacher\ListClassTeaching.cshtml" />
+    <Content Include="Views\ImportExcel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Excelfolder\" />
+    <Folder Include="Content\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

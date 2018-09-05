@@ -21,9 +21,11 @@ function checkTime(i) {
         if ($(".navbar").offset().top > 70) {
             $(".top-area").addClass("top-padding");
             $(".sidebar").addClass("top-padding");
+            $("#wrapper #content-wrapper").addClass("top-padding");
         } else {
             $(".top-area").removeClass("top-padding");
             $(".sidebar").removeClass("top-padding");
+            $("#wrapper #content-wrapper").removeClass("top-padding");
         }
     });
 

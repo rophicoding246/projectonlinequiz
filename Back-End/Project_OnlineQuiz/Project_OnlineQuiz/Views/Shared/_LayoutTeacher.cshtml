@@ -54,20 +54,20 @@
                     <p class="designation">Giảng viên<i class="icofont icofont-caret-down m-l-5"></i></p>
                 </div>
             </div>
-            <li class="nav-item active">
-                <a class="nav-link" href="indexteacher.html">
+            <li class="nav-item @(ViewBag.Current == "Index" ? "active" : "")">
+                <a class="nav-link" href="@Url.Action("Index", "Teacher")">
                     <i class="far fa-window-maximize"></i>
                     <span>Trang chính</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="indexteacher.html">
+            <li class="nav-item @(ViewBag.Current == "ListSubjectTeaching" ? "active" : "")">
+                <a class="nav-link" href="@Url.Action("ListSubjectTeaching", "Teacher")">
                     <i class="fas fa-database"></i>
                     <span>Ngân hàng câu hỏi, đề thi</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="indexteacher.html">
+            <li class="nav-item @(ViewBag.Current == "ListClassTeaching" ? "active" : "")">
+                <a class="nav-link" href="@Url.Action("ListClassTeaching", "Teacher")">
                     <i class="fas fa-chalkboard"></i>
                     <span>Lớp học</span>
                 </a>

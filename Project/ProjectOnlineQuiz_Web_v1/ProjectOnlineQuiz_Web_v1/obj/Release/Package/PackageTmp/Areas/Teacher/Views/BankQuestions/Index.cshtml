@@ -1,0 +1,14 @@
+﻿@model List<DAOModel.ViewModel.DetailSubjectTeaching>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Trang giảng viên</h2>
+
+@foreach (var item in Model)
+{
+    <p>@item.Name</p>
+}
+
+

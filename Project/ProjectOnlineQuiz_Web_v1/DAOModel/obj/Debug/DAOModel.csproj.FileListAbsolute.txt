@@ -1,0 +1,12 @@
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\DAOModel.dll.config
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\DAOModel.dll
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\DAOModel.pdb
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\EntityFramework.dll
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\EntityFramework.SqlServer.dll
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\EntityFramework.xml
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\bin\Debug\EntityFramework.SqlServer.xml
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\obj\Debug\DAOModel.csprojAssemblyReference.cache
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\obj\Debug\DAOModel.csproj.CoreCompileInputs.cache
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\obj\Debug\DAOModel.csproj.CopyComplete
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\obj\Debug\DAOModel.dll
+E:\Studies\DoAnChuyenNganhA\Project\Back-end\ProjectOnlineQuiz_Web_v1\DAOModel\obj\Debug\DAOModel.pdb

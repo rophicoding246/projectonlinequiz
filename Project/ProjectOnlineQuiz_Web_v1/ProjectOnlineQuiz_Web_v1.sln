@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectOnlineQuiz_Web_v1", "ProjectOnlineQuiz_Web_v1\ProjectOnlineQuiz_Web_v1.csproj", "{127C6977-34A6-4F42-B8DA-EF708CC40409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAOModel", "DAOModel\DAOModel.csproj", "{93CD202B-95EB-4044-ADD7-D97128C19921}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{127C6977-34A6-4F42-B8DA-EF708CC40409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127C6977-34A6-4F42-B8DA-EF708CC40409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127C6977-34A6-4F42-B8DA-EF708CC40409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127C6977-34A6-4F42-B8DA-EF708CC40409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CD202B-95EB-4044-ADD7-D97128C19921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CD202B-95EB-4044-ADD7-D97128C19921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CD202B-95EB-4044-ADD7-D97128C19921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CD202B-95EB-4044-ADD7-D97128C19921}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2756646C-18DA-4BDB-9C55-FD7CCD2EB607}
+	EndGlobalSection
+EndGlobal

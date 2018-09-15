@@ -2,22 +2,22 @@
 
 namespace ProjectOnlineQuiz_Web_v1.Areas.Teacher
 {
-    public class TeacherAreaRegistration : AreaRegistration 
+    public class TeacherAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Teacher";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Teacher_default",
                 "GiangVien/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "HomeTeacher", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

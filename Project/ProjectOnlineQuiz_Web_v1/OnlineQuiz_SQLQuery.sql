@@ -1,7 +1,11 @@
-CREATE PROCEDURE prc_ListSubjectTeaching @CodeTeacher NVARCHAR(20)
+CREATE PROCEDURE SP_GetSubjectTeaching @CodeTeacher NVARCHAR(20)
 AS
-SELECT CodeMember, Fullname , Subjects.CodeSubject, Name, Description, tc.DateJoined  FROM dbo.Subjects, dbo.Members, dbo.TeachingSubject AS tc WHERE tc.CodeTeacher = @CodeTeacher AND Subjects.CodeSubject=tc.CodeSubject AND CodeMember=tc.CodeTeacher
+SELECT Subjects.CodeSubject, Name, Description, tc.DateJoined  FROM dbo.Subjects, dbo.TeachingSubject AS tc WHERE tc.CodeTeacher = @CodeTeacher AND Subjects.CodeSubject=tc.CodeSubject
 
+EXEC dbo.SP_GetSubjectTeaching @CodeTeacher = 'GV00001'
 
-EXEC dbo.prc_ListSubjectTeaching @CodeTeacher = 'GV00001'
-DROP PROCEDURE dbo.prc_ListSubjectTeaching
+DROP PROCEDURE dbo.SP_GetSubjectTeaching
+
+ALTER PROCEDURE SP_GetQuestionFromSubject @CodeSubject NVARCHAR(20)
+AS
+SELECT 

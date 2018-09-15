@@ -1,0 +1,7 @@
+﻿@model IEnumerable<ModelDAO.EF.Question>
+
+@foreach (var item in Model)
+{
+    <p>@item.Text</p>
+    @Html.Action("_AnswersOfQuestion", "QAndEBankTeacher", new { codeQuestion = item.CodeQuestion })
+}

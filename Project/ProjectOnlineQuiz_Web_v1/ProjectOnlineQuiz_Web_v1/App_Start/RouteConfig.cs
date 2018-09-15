@@ -16,7 +16,8 @@ namespace ProjectOnlineQuiz_Web_v1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "ProjectOnlineQuiz_Web_v1.Controllers" }
             );
         }
     }
